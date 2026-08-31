@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dungeon2D</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <!-- Persistent Header Overlay -->
+    <header id="ui-header" class="hidden">
+      <div class="logo">Dungeon 2D</div>
+      <div class="menu-icon">☰</div>
+    </header>
+
+    <!-- Game Canvas -->
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- Persistent Status Toolbar Overlay -->
+    <footer id="ui-status-bar" class="hidden">
+      <div class="status-item">
+        <span class="label">Join Code:</span>
+        <code id="toolbar-join-code">...</code>
+      </div>
+      <div class="status-item">
+        <span class="label">Peers:</span>
+        <span id="toolbar-peer-count">0</span>
+      </div>
+    </footer>
+
+    <!-- UI Overlay Layer (Modals) -->
+    <div id="ui-layer">
+      <div id="menu-container" class="card">
+        <h1>Dungeon2D</h1>
+        <p>A WebRTC 2D P2P Engine</p>
+        
+        <div class="input-group">
+          <input type="text" id="input-player-handle" placeholder="Enter Player Handle" required />
+        </div>
+
+        <div class="actions">
+          <button id="btn-create-room">Create Room (Host)</button>
+          <div class="join-section">
+            <input type="text" id="input-join-code" placeholder="Enter Join Code" />
+            <button id="btn-join-room">Join Room</button>
+          </div>
+        </div>
+
+        <div id="status-message" class="hidden"></div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

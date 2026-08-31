@@ -1,0 +1,204 @@
+/* Last Modified: 2026-08-31 */
+:root {
+  --bg-color: #0a0a0a;
+  --text-color: #f0f0f0;
+  --accent-color: #4CAF50;
+  --accent-hover: #45a049;
+  --card-bg: rgba(30, 30, 30, 0.9);
+  --border-color: #333;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow: hidden; /* Prevent scrolling, canvas takes full screen */
+}
+
+/* Canvas takes full screen */
+#gameCanvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* UI Overlay Layer */
+#ui-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  display: flex; /* Flexbox for centering */
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; /* Let clicks pass through where there is no UI */
+}
+
+.card {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  pointer-events: auto; /* Re-enable clicks on the card */
+  min-width: 320px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card h1 {
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  color: var(--accent-color);
+}
+
+.card p {
+  margin-bottom: 2rem;
+  color: #aaa;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: var(--accent-hover);
+}
+
+.join-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
+}
+
+input {
+  padding: 0.8rem;
+  background: #111;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+input:focus {
+  outline: 2px solid var(--accent-color);
+}
+
+.hidden {
+  display: none !important;
+}
+
+#status-message {
+  margin-top: 1.5rem;
+  font-weight: bold;
+}
+
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+#ui-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 60px;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+#ui-header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+#ui-header .menu-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+#ui-status-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 50px;
+  background: var(--card-bg);
+  border-top: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+  z-index: 20;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 2rem;
+  gap: 2rem;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-item .label {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+#toolbar-join-code {
+  background: #000;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  user-select: all;
+}
+
+#toolbar-peer-count {
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.small {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 0.5rem;
+  margin-bottom: 0 !important;
+}
