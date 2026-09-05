@@ -125,9 +125,43 @@ class WebRTCEngine {
         eventBus.emit('network:peer_state', parsed.payload);
       } else if (parsed.type === 'ROOM_DATA') {
         eventBus.emit('network:room_data', parsed.payload);
+      } else if (parsed.type === 'DIRECT_CHAT') {
+        const payload = parsed.payload || {};
+        const safeText = this.sanitizeString(payload.text || '');
+        const safeFrom = this.sanitizeString(payload.from || 'Peer');
+        const timestamp = payload.timestamp || Date.now();
+        eventBus.emit('network:direct_chat', {
+          to: payload.to,
+          from: safeFrom,
+          text: safeText,
+          timestamp,
+          peerId: 'peer1'
+        });
       }
     } catch (e) {
       console.error('Error parsing network data', e);
+    }
+  }
+
+  /**
+   * Sends a 1-on-1 private direct chat message to a targeted peer.
+   * @param {string} targetPeerId - Targeted peer identifier
+   * @param {string} messageText - Message text to send
+   */
+  sendDirectChat(targetPeerId, messageText) {
+    if (this.connection && this.connection.open) {
+      const sanitized = this.sanitizeString(messageText);
+      if (!sanitized) return;
+
+      this.connection.send({
+        type: 'DIRECT_CHAT',
+        payload: {
+          to: targetPeerId,
+          from: this.localHandle,
+          text: sanitized,
+          timestamp: Date.now()
+        }
+      });
     }
   }
 

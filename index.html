@@ -29,21 +29,86 @@
       </div>
     </footer>
 
+    <!-- Controls Legend (Bottom-Left) -->
+    <div id="controls-legend" class="hidden">
+      <div class="legend-header">Controls</div>
+      <div class="legend-keys">
+        <div class="key-group">
+          <span class="key">W</span>
+          <span class="key">A</span>
+          <span class="key">S</span>
+          <span class="key">D</span>
+        </div>
+        <span class="legend-desc">Move Avatar</span>
+      </div>
+      <div class="legend-divider"></div>
+      <div class="legend-colors">
+        <div class="color-item">
+          <span class="color-dot local-dot"></span>
+          <span class="color-label">You (Local)</span>
+        </div>
+        <div class="color-item">
+          <span class="color-dot peer-dot"></span>
+          <span class="color-label">Peer (Remote)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Peer Interaction Modal (Glassmorphism) -->
+    <div id="peer-modal" class="hidden glass-card tooltip-mode">
+      <button id="peer-modal-close" class="modal-close-btn hidden" aria-label="Close modal">✕</button>
+      <div class="peer-modal-info">
+        <div class="peer-modal-avatar"></div>
+        <div class="peer-modal-details">
+          <div id="peer-modal-handle" class="peer-handle">Peer</div>
+          <div id="peer-modal-role" class="peer-role">Remote Player</div>
+        </div>
+      </div>
+      <div id="peer-modal-actions" class="peer-modal-actions hidden">
+        <button id="btn-peer-talk" class="btn-talk">💬 Talk</button>
+      </div>
+    </div>
+
+    <!-- Direct Chat Flyout (Right-Anchored) -->
+    <aside id="chat-flyout" class="chat-flyout">
+      <div class="chat-flyout-header">
+        <div class="chat-flyout-title">
+          <span class="chat-flyout-icon">💬</span>
+          <span id="chat-peer-handle">Chat</span>
+        </div>
+        <button id="btn-close-chat" class="chat-close-btn" aria-label="Close chat">✕</button>
+      </div>
+      <div id="chat-messages" class="chat-messages"></div>
+      <form id="chat-form" class="chat-form">
+        <input type="text" id="chat-input" placeholder="Type a message..." maxlength="200" autocomplete="off" />
+        <button type="submit" id="btn-send-chat">Send</button>
+      </form>
+    </aside>
+
     <!-- UI Overlay Layer (Modals) -->
     <div id="ui-layer">
       <div id="menu-container" class="card">
         <h1>Dungeon2D</h1>
         <p>A WebRTC 2D P2P Engine</p>
         
-        <div class="input-group">
-          <input type="text" id="input-player-handle" placeholder="Enter Player Handle" required />
-        </div>
+        <!-- Tab Navigation -->
+        <nav class="tabs-nav" aria-label="Room options">
+          <button type="button" id="tab-create" class="tab-btn active">Create Room</button>
+          <button type="button" id="tab-join" class="tab-btn">Join Room</button>
+        </nav>
 
-        <div class="actions">
-          <button id="btn-create-room">Create Room (Host)</button>
-          <div class="join-section">
+        <!-- Unified Form Container -->
+        <div class="form-container">
+          <div class="input-group">
+            <input type="text" id="input-player-handle" placeholder="Enter Player Handle" required />
+          </div>
+
+          <div id="group-join-code" class="input-group hidden">
             <input type="text" id="input-join-code" placeholder="Enter Join Code" />
-            <button id="btn-join-room">Join Room</button>
+          </div>
+
+          <div class="actions">
+            <button type="button" id="btn-submit-action">Create Room (Host)</button>
           </div>
         </div>
 

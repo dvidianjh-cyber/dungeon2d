@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.2.1] - 2026-09-05
+### Added
+- Tabbed connection modal interface on welcome screen separating "Create Room" and "Join Room" workflows.
+- Dynamic conditional Join Code field exclusively displayed when the "Join Room" tab is active.
+- Unified dynamic action button updating its text ("Create Room (Host)" vs "Join Room") and dispatch target based on active tab.
+- State retention for player handle input across tab transitions.
+- Configurable `enabledRange` system for peer modal action buttons:
+  - "Talk" action button is dynamically enabled only when the player avatar is within 1 grid square (100px) of the peer.
+  - Clicking a distant peer shows the modal with a disabled, grayed-out Talk button (`💬 Talk (Out of Range)`).
+  - Moving into 1-grid-square range automatically and immediately lights up the button (`.in-range`, vibrant blue glow, clickable).
+### Changed
+- Streamlined welcome dialog from vertically stacked form to horizontal flexbox tabs.
+- Aligned the top of the chat flyout with the bottom of the persistent app title bar (60px) and reduced height to `calc(100vh - 60px)`.
+
+## [v0.2.0] - 2026-09-05
+### Added
+- Floating Controls Legend permanently anchored to the bottom-left of the viewport displaying WASD movement keys and avatar color legend.
+- Screen-to-world coordinate transformation in RenderEngine accounting for camera translation, zoom scale, and viewport dimensions.
+- Mouse-picking and intersection detection against 40x40 pixel AABB bounds of remote peers.
+- Transient hover tooltip and persistent click-locked glassmorphic modal displaying peer information and "Talk" button.
+- 1-on-1 private Direct Chat sliding flyout pane with real-time WebRTC DataChannel message delivery.
+- Strict XSS sanitization on incoming direct chat payloads via `sanitizeString()` and DOM text node handling.
+- Keyboard focus management between chat pane and avatar movement:
+  - Initiating chat grants exclusive keyboard focus to the chat input and halts avatar WASD movement.
+  - Receiving incoming chat opens the flyout in a non-keyboard-focused, higher transparency state without interrupting avatar movement.
+  - Clicking outside the chat pane shifts keyboard focus back to avatar movement and increases flyout transparency.
+  - Clicking inside the chat pane restores full opacity and re-focuses the chat input.
+  - Sending a message (via Enter key or clicking 'Send') automatically shifts keyboard focus back to the avatar and dims the chat pane.
+### Changed
+- Decoupled Canvas rendering and user interaction through Event Bus events (`input:peer_hover`, `input:peer_unhover`, `input:peer_click`, `input:canvas_click`, `network:direct_chat`, `ui:chat_focus`).
+
 ## [v0.1.2] - 2026-08-31
 ### Added
 - Inter-player AABB collision. Player characters physically block each other and allow sliding.

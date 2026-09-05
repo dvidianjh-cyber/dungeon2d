@@ -28,6 +28,9 @@ class GameLoop {
     // Peer state cache for collisions
     this.peers = new Map();
 
+    // Input blocking state (e.g. when chat pane has focus)
+    this.isInputBlocked = false;
+
     // Input state
     this.keys = {
       w: false,
@@ -46,19 +49,48 @@ class GameLoop {
 
   bindInputs() {
     window.addEventListener('keydown', (e) => {
+      // If typing in any input element or if input is explicitly blocked by UI
+      if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
+        return;
+      }
+      if (this.isInputBlocked) {
+        return;
+      }
+
       if (this.keys.hasOwnProperty(e.key) || this.keys.hasOwnProperty(e.key.toLowerCase())) {
         this.keys[e.key] !== undefined ? this.keys[e.key] = true : this.keys[e.key.toLowerCase()] = true;
       }
     });
 
     window.addEventListener('keyup', (e) => {
+      if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
+        return;
+      }
+
       if (this.keys.hasOwnProperty(e.key) || this.keys.hasOwnProperty(e.key.toLowerCase())) {
         this.keys[e.key] !== undefined ? this.keys[e.key] = false : this.keys[e.key.toLowerCase()] = false;
       }
     });
   }
 
+  /**
+   * Resets all movement keys to unpressed state.
+   */
+  resetMovementKeys() {
+    for (const key in this.keys) {
+      this.keys[key] = false;
+    }
+  }
+
   bindNetworkEvents() {
+    // Listen for chat focus changes to pause avatar movement
+    eventBus.on('ui:chat_focus', (isFocused) => {
+      this.isInputBlocked = isFocused;
+      if (isFocused) {
+        this.resetMovementKeys();
+      }
+    });
+
     eventBus.on('network:peer_state', (state) => {
       // We only support one peer named 'peer1' for now
       const current = this.peers.get('peer1') || {};

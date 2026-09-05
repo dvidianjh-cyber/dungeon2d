@@ -82,6 +82,11 @@ class Dungeon2D {
         webrtcEngine.sendRoomData(roomManager.getRoomData());
       }
     });
+
+    // User sent a direct chat message from the UI
+    eventBus.on('ui:send_direct_chat', ({ targetPeerId, text }) => {
+      webrtcEngine.sendDirectChat(targetPeerId, text);
+    });
   }
 }
 

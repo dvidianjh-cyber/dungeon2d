@@ -18,6 +18,12 @@ class RenderEngine {
     
     // Peer state
     this.peers = new Map();
+
+    // Track last known local player position for coordinate transformations
+    this.lastPlayerState = { x: 1000, y: 1000, radius: 20 };
+
+    // Currently hovered peer identifier
+    this.hoveredPeerId = null;
   }
 
   init() {
@@ -30,6 +36,15 @@ class RenderEngine {
     // Zoom listener (named function for memory management)
     this.handleZoom = this.handleZoom.bind(this);
     window.addEventListener('wheel', this.handleZoom, { passive: false });
+
+    // Mouse picking listeners
+    this.handleMouseMove = this.handleMouseMove.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
+
+    this.canvas.addEventListener('mousemove', this.handleMouseMove);
+    this.canvas.addEventListener('click', this.handleClick);
+    this.canvas.addEventListener('mouseleave', this.handleMouseLeave);
 
     // Listen for peer initialization
     eventBus.on('network:peer_init', ({ handle }) => {
@@ -48,6 +63,147 @@ class RenderEngine {
     eventBus.on('game:frame', (localPlayerState) => {
       this.render(localPlayerState);
     });
+  }
+
+  /**
+   * Transforms screen (canvas) coordinates to world coordinates by reversing camera translation and zoom.
+   * @param {number} screenX - X coordinate relative to canvas
+   * @param {number} screenY - Y coordinate relative to canvas
+   * @returns {{x: number, y: number}} World coordinates
+   */
+  screenToWorld(screenX, screenY) {
+    const px = this.lastPlayerState.x;
+    const py = this.lastPlayerState.y;
+    return {
+      x: px + (screenX - this.width / 2) / this.zoomScale,
+      y: py + (screenY - this.height / 2) / this.zoomScale
+    };
+  }
+
+  /**
+   * Transforms world coordinates to screen (canvas) coordinates.
+   * @param {number} worldX - X coordinate in world space
+   * @param {number} worldY - Y coordinate in world space
+   * @returns {{x: number, y: number}} Screen coordinates
+   */
+  worldToScreen(worldX, worldY) {
+    const px = this.lastPlayerState.x;
+    const py = this.lastPlayerState.y;
+    return {
+      x: (worldX - px) * this.zoomScale + this.width / 2,
+      y: (worldY - py) * this.zoomScale + this.height / 2
+    };
+  }
+
+  /**
+   * Checks if world coordinates intersect with any peer's 40x40 pixel AABB bounds.
+   * @param {number} worldX 
+   * @param {number} worldY 
+   * @returns {{peerId: string, peer: Object}|null} Matching peer data or null
+   */
+  findPeerAt(worldX, worldY) {
+    for (const [peerId, peer] of this.peers.entries()) {
+      if (peer.x === undefined || peer.y === undefined) continue;
+      const radius = peer.radius || 20;
+      // 40x40 AABB bounding box check
+      if (
+        worldX >= peer.x - radius &&
+        worldX <= peer.x + radius &&
+        worldY >= peer.y - radius &&
+        worldY <= peer.y + radius
+      ) {
+        return { peerId, peer };
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Handles mouse movement over the canvas for peer hover detection.
+   * @param {MouseEvent} e 
+   */
+  handleMouseMove(e) {
+    const rect = this.canvas.getBoundingClientRect();
+    const screenX = e.clientX - rect.left;
+    const screenY = e.clientY - rect.top;
+    const worldPos = this.screenToWorld(screenX, screenY);
+    const hit = this.findPeerAt(worldPos.x, worldPos.y);
+
+    if (hit) {
+      this.canvas.style.cursor = 'pointer';
+      if (this.hoveredPeerId !== hit.peerId) {
+        this.hoveredPeerId = hit.peerId;
+        eventBus.emit('input:peer_hover', {
+          peerId: hit.peerId,
+          peer: hit.peer,
+          screenX: e.clientX,
+          screenY: e.clientY,
+          worldX: worldPos.x,
+          worldY: worldPos.y
+        });
+      } else {
+        eventBus.emit('input:peer_hover_move', {
+          peerId: hit.peerId,
+          peer: hit.peer,
+          screenX: e.clientX,
+          screenY: e.clientY
+        });
+      }
+    } else {
+      if (this.hoveredPeerId !== null) {
+        const prevId = this.hoveredPeerId;
+        this.hoveredPeerId = null;
+        this.canvas.style.cursor = 'default';
+        eventBus.emit('input:peer_unhover', { previousPeerId: prevId });
+      }
+    }
+  }
+
+  /**
+   * Handles canvas clicks for peer selection and modal locking.
+   * @param {MouseEvent} e 
+   */
+  handleClick(e) {
+    const rect = this.canvas.getBoundingClientRect();
+    const screenX = e.clientX - rect.left;
+    const screenY = e.clientY - rect.top;
+    const worldPos = this.screenToWorld(screenX, screenY);
+    const hit = this.findPeerAt(worldPos.x, worldPos.y);
+
+    if (hit) {
+      const distance = Math.hypot(
+        this.lastPlayerState.x - hit.peer.x,
+        this.lastPlayerState.y - hit.peer.y
+      );
+      eventBus.emit('input:peer_click', {
+        peerId: hit.peerId,
+        peer: hit.peer,
+        screenX: e.clientX,
+        screenY: e.clientY,
+        worldX: worldPos.x,
+        worldY: worldPos.y,
+        distance
+      });
+    } else {
+      eventBus.emit('input:canvas_click', {
+        screenX: e.clientX,
+        screenY: e.clientY,
+        worldX: worldPos.x,
+        worldY: worldPos.y
+      });
+    }
+  }
+
+  /**
+   * Handles mouse leave to ensure hover state is reset.
+   */
+  handleMouseLeave() {
+    if (this.hoveredPeerId !== null) {
+      const prevId = this.hoveredPeerId;
+      this.hoveredPeerId = null;
+      this.canvas.style.cursor = 'default';
+      eventBus.emit('input:peer_unhover', { previousPeerId: prevId });
+    }
   }
 
   /**
@@ -76,6 +232,8 @@ class RenderEngine {
   }
 
   render(playerState) {
+    this.lastPlayerState = playerState;
+
     // 1. Clear screen
     this.ctx.fillStyle = '#050505'; // Background outside the room
     this.ctx.fillRect(0, 0, this.width, this.height);
@@ -100,6 +258,28 @@ class RenderEngine {
     this.drawFace(playerState.x, playerState.y, '#4CAF50', playerState.radius || 20, playerState.handle);
 
     this.ctx.restore();
+
+    // Emit screen positions and distance data for active peers to support UI tracking & action ranges
+    if (this.peers.size > 0) {
+      const positions = {};
+      const peerData = {};
+      for (const [peerId, peer] of this.peers.entries()) {
+        if (peer.x !== undefined && peer.y !== undefined) {
+          const screenPos = this.worldToScreen(peer.x, peer.y);
+          positions[peerId] = screenPos;
+          const dist = Math.hypot(playerState.x - peer.x, playerState.y - peer.y);
+          peerData[peerId] = {
+            screenX: screenPos.x,
+            screenY: screenPos.y,
+            worldX: peer.x,
+            worldY: peer.y,
+            distance: dist
+          };
+        }
+      }
+      eventBus.emit('render:peer_screen_positions', positions);
+      eventBus.emit('render:peer_data', peerData);
+    }
   }
 
   drawRoom() {
