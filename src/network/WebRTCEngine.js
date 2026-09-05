@@ -4,7 +4,7 @@
  * Manages WebRTC signaling and DataChannels using PeerJS.
  */
 import eventBus from '../utils/EventBus.js';
-import Peer from 'peerjs';
+import Peer from '../vendor/peerjs.js';
 
 class WebRTCEngine {
   constructor() {

@@ -15,6 +15,9 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - Streamlined welcome dialog from vertically stacked form to horizontal flexbox tabs.
 - Aligned the top of the chat flyout with the bottom of the persistent app title bar (60px) and reduced height to `calc(100vh - 60px)`.
+### Fixed
+- Resolved `Uncaught TypeError: Failed to resolve module specifier "peerjs"` on GitHub Pages by replacing bare module import with a local vendor wrapper and bundling `peerjs.min.js`.
+- Resolved `404 Not Found (vite.svg)` by providing a themed dungeon emblem SVG asset at `./vite.svg` and `public/vite.svg`.
 
 ## [v0.2.0] - 2026-09-05
 ### Added
