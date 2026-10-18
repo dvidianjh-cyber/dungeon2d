@@ -1,4 +1,4 @@
-<!-- Last Modified: 2026-10-17 -->
+<!-- Last Modified: 2026-10-18 -->
 # Dungeon2D · Littleton
 
 A playable, metadata-driven multiplayer adventure. Explore a modern town with animated pixel characters, residents, inventory, gold, shops, a bank, a small quest and a linked casino world.
@@ -45,6 +45,8 @@ npm run preview
 ```
 
 Deploy the `dist/` directory to any static web host. Relative asset URLs support GitHub Pages subpaths. Use HTTPS for public multiplayer. The app has no required game server: PeerJS cloud signalling introduces peers, then the host validates all movement and actions over reliable WebRTC data channels. Messages remain JSON; PeerJS binary framing chunks larger metadata transfers. There is a seven-guest room limit, request-size/rate limits, stale-input expiry, collision-safe arrivals, late-join snapshots and explicit host-disconnect handling.
+
+For GitHub Pages, set **Settings → Pages → Build and deployment → Source** to **GitHub Actions**. The workflow in `.github/workflows/pages.yml` installs dependencies, runs tests, builds the app and publishes only `dist/` on every push to `main`. Publishing the repository root directly serves unbundled npm imports (`fflate`, `peerjs`) and omits the public assets at their expected URLs, leaving the menu stuck on “Loading adventures…”. The build regression test checks the bundled module graph, favicon and adventure packs under a project subpath.
 
 PeerJS cloud availability and peer-to-peer network connectivity are external requirements. Some firewalls or symmetric NATs require a TURN relay; configure your deployment's short-lived TURN credentials through the PeerJS `config.iceServers` options in `src/network/Session.js`. Do not embed permanent TURN credentials in a public bundle. There is no automatic host migration or reconnect/resume. Leaving ends the session's progress; names, outfit, mute preference and imported packs are saved, but inventories/world progress are session-scoped. Font loading is optional and falls back to installed fonts.
 
