@@ -1,7 +1,12 @@
-<!-- Last Modified: 2026-10-17 -->
+<!-- Last Modified: 2026-10-18 -->
 # Changelog
 
 All notable changes to this project will be documented in this file.
+
+## [Unreleased]
+### Changed
+- Switched the title bar, welcome pane and adventure sidebar to a dark forest palette, with matching controls, dialogs and HUD surfaces, readable text and highlighted active states.
+- Matched adventure sidebar headings and item titles to the interface's DM Sans typeface, with semibold weights and roomier line spacing.
 
 ## [v0.3.0] - 2026-10-17
 ### Added
