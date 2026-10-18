@@ -1,122 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./assets/vite-DrE-twF1.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dungeon2D</title>
-    <script type="module" crossorigin src="./assets/index-B5zoVicw.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-C7Kx_5sm.css">
-  </head>
-  <body>
-    <!-- Persistent Header Overlay -->
-    <header id="ui-header" class="hidden">
-      <div class="logo">Dungeon 2D</div>
-      <div class="menu-icon">☰</div>
-    </header>
-
-    <!-- Game Canvas -->
-    <canvas id="gameCanvas"></canvas>
-
-    <!-- Persistent Status Toolbar Overlay -->
-    <footer id="ui-status-bar" class="hidden">
-      <div class="status-item">
-        <span class="label">Join Code:</span>
-        <code id="toolbar-join-code">...</code>
-      </div>
-      <div class="status-item">
-        <span class="label">Peers:</span>
-        <span id="toolbar-peer-count">0</span>
-      </div>
-    </footer>
-
-    <!-- Controls Legend (Bottom-Left) -->
-    <div id="controls-legend" class="hidden">
-      <div class="legend-header">Controls</div>
-      <div class="legend-keys">
-        <div class="key-group">
-          <span class="key">W</span>
-          <span class="key">A</span>
-          <span class="key">S</span>
-          <span class="key">D</span>
-        </div>
-        <span class="legend-desc">Move Avatar</span>
-      </div>
-      <div class="legend-divider"></div>
-      <div class="legend-colors">
-        <div class="color-item">
-          <span class="color-dot local-dot"></span>
-          <span class="color-label">You (Local)</span>
-        </div>
-        <div class="color-item">
-          <span class="color-dot peer-dot"></span>
-          <span class="color-label">Peer (Remote)</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Peer Interaction Modal (Glassmorphism) -->
-    <div id="peer-modal" class="hidden glass-card tooltip-mode">
-      <button id="peer-modal-close" class="modal-close-btn hidden" aria-label="Close modal">✕</button>
-      <div class="peer-modal-info">
-        <div class="peer-modal-avatar"></div>
-        <div class="peer-modal-details">
-          <div id="peer-modal-handle" class="peer-handle">Peer</div>
-          <div id="peer-modal-role" class="peer-role">Remote Player</div>
-        </div>
-      </div>
-      <div id="peer-modal-actions" class="peer-modal-actions hidden">
-        <button id="btn-peer-talk" class="btn-talk">💬 Talk</button>
-      </div>
-    </div>
-
-    <!-- Direct Chat Flyout (Right-Anchored) -->
-    <aside id="chat-flyout" class="chat-flyout">
-      <div class="chat-flyout-header">
-        <div class="chat-flyout-title">
-          <span class="chat-flyout-icon">💬</span>
-          <span id="chat-peer-handle">Chat</span>
-        </div>
-        <button id="btn-close-chat" class="chat-close-btn" aria-label="Close chat">✕</button>
-      </div>
-      <div id="chat-messages" class="chat-messages"></div>
-      <form id="chat-form" class="chat-form">
-        <input type="text" id="chat-input" placeholder="Type a message..." maxlength="200" autocomplete="off" />
-        <button type="submit" id="btn-send-chat">Send</button>
-      </form>
-    </aside>
-
-    <!-- UI Overlay Layer (Modals) -->
-    <div id="ui-layer">
-      <div id="menu-container" class="card">
-        <h1>Dungeon2D</h1>
-        <p>A WebRTC 2D P2P Engine</p>
-        
-        <!-- Tab Navigation -->
-        <nav class="tabs-nav" aria-label="Room options">
-          <button type="button" id="tab-create" class="tab-btn active">Create Room</button>
-          <button type="button" id="tab-join" class="tab-btn">Join Room</button>
-        </nav>
-
-        <!-- Unified Form Container -->
-        <div class="form-container">
-          <div class="input-group">
-            <input type="text" id="input-player-handle" placeholder="Enter Player Handle" required />
-          </div>
-
-          <div id="group-join-code" class="input-group hidden">
-            <input type="text" id="input-join-code" placeholder="Enter Join Code" />
-          </div>
-
-          <div class="actions">
-            <button type="button" id="btn-submit-action">Create Room (Host)</button>
-          </div>
-        </div>
-
-        <div id="status-message" class="hidden"></div>
-      </div>
-    </div>
-
-    <script src="./peerjs.min.js"></script>
-  </body>
-</html>
+<!-- Last Modified: 2026-10-17 -->
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="theme-color" content="#f4f1e8" /><meta name="description" content="Explore Littleton together in a multiplayer pixel adventure." /><title>Littleton — Dungeon2D</title><link rel="icon" href="./favicon.svg" type="image/svg+xml" />  <script type="module" crossorigin src="./assets/index-H0EuGG98.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CMTwEalT.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="./" aria-label="Dungeon2D home"><span class="brand-mark">d<span>2</span></span><span>DUNGEON<span class="brand-light">2D</span><small>little worlds, shared adventures</small></span></a><div id="play-location" class="location hidden"><span class="live-dot"></span><span id="location-name">Littleton</span><span id="location-type">The neighbourhood</span></div><div class="top-actions"><span class="edition">THE LITTLETON COLLECTION <span>01</span></span><button id="sound-toggle" class="icon-button" aria-label="Mute sound" title="Sound on">♫</button><button id="menu-button" class="quiet hidden">Leave adventure ↗</button></div></header>
+  <main id="main">
+    <section id="welcome" class="welcome"><div class="eyebrow"><span class="tiny-line"></span>A MULTIPLAYER POCKET ADVENTURE</div><h1>Small town.<br>Big little<br><em>adventures.</em></h1><p class="intro">A few familiar faces. A pocket full of possibilities.<br>Make yourself at home in Littleton.</p>
+      <div class="world-picker"><div class="section-label">YOUR NEXT DESTINATION <span>↙</span></div><label class="sr-only" for="pack-select">Choose a dungeon</label><select id="pack-select"><option>Loading adventures…</option></select><p id="pack-description">Unpack a world and see where it takes you.</p><div class="world-tags"><span>✦ EXPLORATION</span><span>1–8 PLAYERS</span><span>PIXEL WORLD</span></div></div>
+      <form id="start-form"><div class="identity-row"><div class="field"><label for="player-name">WHAT SHOULD WE CALL YOU?</label><input id="player-name" maxlength="24" placeholder="Your name" required autocomplete="nickname" value="Traveller" /></div><button id="avatar-button" type="button" class="avatar-button" title="Change your outfit" aria-label="Change your outfit"><canvas id="avatar-preview" width="56" height="64"></canvas><span>↻</span></button></div><div class="play-options" role="group" aria-label="Play mode"><button type="button" class="mode active" data-mode="solo">On my own</button><button type="button" class="mode" data-mode="host">Host friends</button><button type="button" class="mode" data-mode="join">Join friends</button></div><label id="join-label" class="hidden" for="join-code">ROOM CODE<input id="join-code" placeholder="LT-XXXXXXXX" maxlength="40" autocomplete="off" /></label><button id="start-button" class="primary" type="submit" disabled><span>Step into Littleton</span><span>→</span></button></form>
+      <p id="menu-status" class="menu-status" role="status">Loading your next adventure…</p><div class="pack-tools"><button id="import-button" class="text-button">↑ Import a dungeon</button><span>·</span><button id="export-button" class="text-button">↓ Download pack</button><input id="pack-file" class="hidden" type="file" accept=".dungeon" /></div><div class="welcome-foot"><span class="live-dot"></span>No accounts. Just adventures.<button id="help-button" class="text-button">How to play ↗</button></div>
+    </section>
+    <section id="scene" class="scene" aria-label="Game world"><canvas id="gameCanvas" tabindex="0" aria-label="Dungeon game. Use WASD or arrow keys to move, E to interact, I for inventory, M for map."></canvas><div id="preview-caption" class="preview-caption"><span class="eyebrow">WELCOME TO YOUR NEXT CHAPTER</span><h2>A good day to<br>get a little lost.</h2><p>LITTLETON <span>·</span> A WORLD BY DUNGEON2D</p></div><div id="preview-badge" class="preview-badge"><span class="live-dot"></span>Twelve places. Countless little stories.</div>
+      <div id="game-hud" class="hidden"><div class="left-hud"><div class="profile-card"><canvas id="hud-avatar" width="48" height="54"></canvas><div><strong id="hud-name">Traveller</strong><span id="energy-label">Feeling good</span><div class="energy-track"><i id="energy-bar"></i></div></div><div class="gold"><span>◈</span><b id="gold-count">50</b><small>GOLD</small></div></div><button id="map-button" class="map-button"><canvas id="minimap" width="180" height="125"></canvas><span><span>Neighbourhood map</span><kbd>M</kbd></span></button><div id="quest-hint" class="quest-hint"><span>✧ A LITTLE LOCAL KNOWLEDGE</span><p>Say hello to Elliot in the square.</p></div></div><div class="world-controls"><button id="zoom-out" class="icon-button" aria-label="Zoom out">−</button><button id="zoom-in" class="icon-button" aria-label="Zoom in">+</button></div><div id="nearby-prompt" class="nearby-prompt"><kbd>E</kbd><span>Explore the neighbourhood</span></div><div id="toast" class="toast hidden" role="status" aria-live="polite"></div><div class="touch-controls" aria-label="Movement controls"><button data-direction="up" aria-label="Walk north">↑</button><button data-direction="left" aria-label="Walk west">←</button><button data-direction="down" aria-label="Walk south">↓</button><button data-direction="right" aria-label="Walk east">→</button></div></div>
+    </section>
+    <aside id="side-panel" class="side-panel hidden" aria-label="Adventure panel"><div id="selection-panel" class="selection-panel"><div class="section-label">A WORLD TO DISCOVER <span>✧</span></div><h2>Follow your curiosity.</h2><p>Click a person, building or object to see what you can do.</p></div><nav class="panel-tabs" aria-label="Adventure tabs"><button class="active" data-tab="inventory">Inventory <kbd>I</kbd></button><button data-tab="journal">Journal</button><button data-tab="chat">Friends <span id="player-count">1</span></button></nav><section id="inventory-panel" class="panel-content"><div class="inventory-heading"><span>THE THINGS YOU CARRY</span><span id="item-count">3 items</span></div><div id="inventory-grid" class="inventory-grid"></div><div id="item-detail" class="item-detail"><p>A little room for the things you find along the way.</p></div></section><section id="journal-panel" class="panel-content hidden"><div class="section-label">NOTES FROM THE NEIGHBOURHOOD</div><div id="quest-list"></div><ol id="journal-list" class="journal-list"></ol></section><section id="chat-panel" class="panel-content hidden"><div id="roster" class="roster"></div><div id="chat-messages" class="chat-messages" aria-live="polite"></div><form id="chat-form" class="chat-form"><label class="sr-only" for="chat-input">Message your room</label><input id="chat-input" maxlength="240" placeholder="Say something nice…" autocomplete="off" /><button type="submit" aria-label="Send message">↑</button></form></section><div class="panel-bottom"><span class="live-dot"></span><span id="session-status">Your own little adventure</span></div></aside>
+  </main>
+  <footer class="bottom-bar"><span id="footer-left">BUILT FOR THE WANDERERS, THE COLLECTORS & THE CURIOUS.</span><div id="game-controls" class="hidden"><span><kbd>WASD</kbd> move</span><span><kbd>E</kbd> interact</span><span><kbd>I</kbd> inventory</span><button id="mobile-panel-button" class="text-button">Pockets ☷</button></div><div class="footer-right"><button id="copy-code" class="text-button hidden" title="Copy room code"></button><span class="version">DUNGEON2D <b>v0.3</b></span></div></footer>
+  <dialog id="map-dialog"><div class="dialog-heading"><div><span class="eyebrow">YOU ARE HERE</span><h2 id="map-title">Littleton</h2></div><button class="icon-button" data-close="map-dialog" aria-label="Close map">×</button></div><canvas id="large-map" width="800" height="560"></canvas><p>Gold dot: you · blue dots: your friends · squares: places to explore</p><div id="map-places" class="map-places"></div></dialog>
+  <dialog id="help-dialog"><div class="dialog-heading"><div><span class="eyebrow">MAKE YOURSELF AT HOME</span><h2>A little field guide.</h2></div><button class="icon-button" data-close="help-dialog" aria-label="Close help">×</button></div><p>Walk with <b>WASD / arrow keys</b> or the touch arrows. Click an object, or press <b>E</b> beside one. The action panel lets you inspect, talk, take and enter.</p><p>Choose an item in your inventory to use or drop it. To give Adelle her key, select Adelle, then choose the key and press <b>Use on Adelle</b>. For a film, use a ticket on the projector.</p><p>At a shop, click <b>Buy</b> to browse stock or select a carried item and <b>Sell</b>. Shops buy for half the listed price. The bank holds your gold during the session.</p><p><b>Host friends</b> creates a room code. Friends choose <b>Join friends</b>; the host shares the world automatically. Up to eight players can explore different interiors in the same room.</p><p>Import or download a <b>.dungeon</b> file from the menu. It is a ZIP containing JSON metadata and all linked packs. Sessions start fresh; imported packs and preferences stay in this browser.</p><p class="muted">Online rooms use PeerJS signalling and WebRTC. Some restrictive networks require a TURN relay. Keep the host’s tab open while playing.</p></dialog>
+  <dialog id="leave-dialog"><div class="dialog-heading"><h2>Call it a day?</h2><button class="icon-button" data-close="leave-dialog" aria-label="Keep playing">×</button></div><p id="leave-description">This session’s progress will end. Your installed dungeon packs will stay here.</p><div class="button-row"><button class="quiet" data-close="leave-dialog">Keep exploring</button><button id="confirm-leave" class="primary">Back to the menu</button></div></dialog>
+</body></html>

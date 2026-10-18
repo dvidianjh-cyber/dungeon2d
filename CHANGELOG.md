@@ -1,6 +1,22 @@
+<!-- Last Modified: 2026-10-17 -->
 # Changelog
 
 All notable changes to this project will be documented in this file.
+
+## [v0.3.0] - 2026-10-17
+### Added
+- Littleton, a modern town with twelve enterable venues, eleven local interiors and a separate linked casino pack.
+- Metadata-defined maps, items, NPCs, conversations, shops, fetch quests, effects, palettes and custom item pixel grids.
+- Original pixel scenery, animated directional characters, camera zoom, minimap and full destination map.
+- Inspect/talk/take/use/drop/buy/sell/enter actions, inventory, gold, bank balances, cinema ticket interaction and a fictional-gold dice game.
+- Solo mode and up to eight players through a host-authoritative PeerJS room, shared object/stock state, late-join metadata, map-independent party members and room chat.
+- Validated `.dungeon` ZIP import/export with complete dependency graphs, browser persistence for imported packs and a command-line pack builder.
+- Responsive adventure UI, touch movement, journal, outfit selection and subtle gesture-gated synthesized sound.
+- Automated gameplay, archive and multiplayer-protocol tests, plus an authoring guide.
+### Changed
+- Replaced the proof-of-concept single-room runtime with separate world, pack, network, rendering, audio and UI modules.
+- Large JSON protocol messages now use PeerJS binary framing for automatic chunking.
+- Updated the affected source-map build dependency to the patched release.
 
 ## [v0.2.1] - 2026-09-05
 ### Added

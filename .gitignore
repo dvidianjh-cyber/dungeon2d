@@ -1,0 +1,5 @@
+# Last Modified: 2026-10-17
+node_modules/
+# dist is already versioned by this repository; include regenerated bundles.
+.cache/
+test-results/

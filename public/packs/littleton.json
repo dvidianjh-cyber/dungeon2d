@@ -1,0 +1,1869 @@
+{
+  "format": "dungeon2d-pack",
+  "version": 1,
+  "lastModified": "2026-10-17",
+  "id": "littleton",
+  "title": "Littleton",
+  "subtitle": "A small town. A few familiar faces. Your own little adventure.",
+  "description": "Wander quiet streets, meet the neighbours and see where the day takes you.",
+  "author": "Dungeon2D",
+  "theme": "town",
+  "dependencies": [
+    "golden-hour"
+  ],
+  "startMap": "town",
+  "palette": {
+    "grass": "#799668",
+    "grassDark": "#6d885e",
+    "path": "#c6c2a9",
+    "road": "#777d7b",
+    "water": "#7eafb3",
+    "wall": "#ded5ba",
+    "roof": "#946c58",
+    "floor": "#b4a58b",
+    "accent": "#d5b76e"
+  },
+  "items": {
+    "apple": {
+      "name": "Crisp apple",
+      "icon": "apple",
+      "description": "An apple from the town orchard. Restores 20 energy.",
+      "value": 4,
+      "use": {
+        "type": "restore",
+        "amount": 20
+      },
+      "consumable": true
+    },
+    "coffee": {
+      "name": "Flat white",
+      "icon": "coffee",
+      "description": "A very good coffee. Restores 35 energy.",
+      "value": 8,
+      "use": {
+        "type": "restore",
+        "amount": 35
+      },
+      "consumable": true
+    },
+    "key": {
+      "name": "Brass key",
+      "icon": "key",
+      "description": "A small brass key. A tag reads “Adelle”. Perhaps she is looking for it.",
+      "value": 0
+    },
+    "ticket": {
+      "name": "Cinema ticket",
+      "icon": "ticket",
+      "description": "One seat for The Long Way Home. Use at the cinema projector.",
+      "value": 12,
+      "use": {
+        "type": "target",
+        "tag": "projector",
+        "message": "The lights dim. A little film about coming home fills the screen. You leave feeling refreshed.",
+        "energy": 30
+      },
+      "consumable": true
+    },
+    "flower": {
+      "name": "Wildflower",
+      "icon": "flower",
+      "description": "A little colour from the village green. The general store buys these.",
+      "value": 3
+    },
+    "sandwich": {
+      "name": "Club sandwich",
+      "icon": "sandwich",
+      "description": "Lunch, neatly wrapped. Restores 50 energy.",
+      "value": 10,
+      "use": {
+        "type": "restore",
+        "amount": 50
+      },
+      "consumable": true
+    },
+    "book": {
+      "name": "Littleton guide",
+      "icon": "book",
+      "description": "A pocket guide to the town.",
+      "value": 6,
+      "use": {
+        "type": "message",
+        "message": "Local tip: Adelle lost a brass key near the fountain. Shops buy useful items for half the shelf price. The casino is a separate, linked dungeon pack."
+      }
+    }
+  },
+  "player": {
+    "gold": 50,
+    "inventory": {
+      "book": 1,
+      "apple": 2
+    },
+    "colors": [
+      "#617f78",
+      "#ad6b58",
+      "#7184a3",
+      "#af955e",
+      "#9c7290",
+      "#7f955d"
+    ]
+  },
+  "maps": [
+    {
+      "id": "town",
+      "name": "Littleton",
+      "subtitle": "The neighbourhood",
+      "width": 1600,
+      "height": 1280,
+      "spawn": {
+        "x": 800,
+        "y": 740
+      },
+      "environment": "outdoor",
+      "surfaces": [
+        {
+          "x": 0,
+          "y": 430,
+          "width": 1600,
+          "height": 110,
+          "type": "road"
+        },
+        {
+          "x": 0,
+          "y": 950,
+          "width": 1600,
+          "height": 100,
+          "type": "road"
+        },
+        {
+          "x": 350,
+          "y": 0,
+          "width": 90,
+          "height": 1280,
+          "type": "road"
+        },
+        {
+          "x": 1180,
+          "y": 0,
+          "width": 90,
+          "height": 1280,
+          "type": "road"
+        },
+        {
+          "x": 590,
+          "y": 560,
+          "width": 430,
+          "height": 350,
+          "type": "path"
+        },
+        {
+          "x": 720,
+          "y": 0,
+          "width": 65,
+          "height": 1280,
+          "type": "path"
+        },
+        {
+          "x": 0,
+          "y": 1100,
+          "width": 290,
+          "height": 180,
+          "type": "water"
+        },
+        {
+          "x": 170,
+          "y": 295,
+          "width": 40,
+          "height": 40,
+          "type": "path"
+        },
+        {
+          "x": 550,
+          "y": 295,
+          "width": 40,
+          "height": 40,
+          "type": "path"
+        },
+        {
+          "x": 970,
+          "y": 295,
+          "width": 40,
+          "height": 40,
+          "type": "path"
+        },
+        {
+          "x": 1400,
+          "y": 295,
+          "width": 40,
+          "height": 40,
+          "type": "path"
+        },
+        {
+          "x": 170,
+          "y": 785,
+          "width": 40,
+          "height": 40,
+          "type": "path"
+        },
+        {
+          "x": 535,
+          "y": 785,
+          "width": 40,
+          "height": 40,
+          "type": "path"
+        },
+        {
+          "x": 1110,
+          "y": 785,
+          "width": 40,
+          "height": 40,
+          "type": "path"
+        },
+        {
+          "x": 1400,
+          "y": 785,
+          "width": 40,
+          "height": 40,
+          "type": "path"
+        },
+        {
+          "x": 535,
+          "y": 1225,
+          "width": 40,
+          "height": 40,
+          "type": "path"
+        },
+        {
+          "x": 970,
+          "y": 1225,
+          "width": 40,
+          "height": 40,
+          "type": "path"
+        },
+        {
+          "x": 1400,
+          "y": 1225,
+          "width": 40,
+          "height": 40,
+          "type": "path"
+        },
+        {
+          "x": 1395,
+          "y": 115,
+          "width": 40,
+          "height": 40,
+          "type": "path"
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 0,
+          "y": 1100,
+          "width": 290,
+          "height": 180
+        }
+      ],
+      "objects": [
+        {
+          "id": "venue-adelle",
+          "kind": "building",
+          "name": "Adelles House",
+          "description": "Adelles House, a familiar landmark in Littleton. Step inside and have a look around.",
+          "x": 100,
+          "y": 150,
+          "width": 180,
+          "height": 145,
+          "solid": true,
+          "style": "house",
+          "color": "#af786c",
+          "interaction": {
+            "x": 190,
+            "y": 315
+          },
+          "actions": [
+            "inspect",
+            "enter"
+          ],
+          "portal": {
+            "pack": "littleton",
+            "map": "adelle"
+          }
+        },
+        {
+          "id": "venue-jim",
+          "kind": "building",
+          "name": "Jims House",
+          "description": "Jims House, a familiar landmark in Littleton. Step inside and have a look around.",
+          "x": 480,
+          "y": 150,
+          "width": 180,
+          "height": 145,
+          "solid": true,
+          "style": "house",
+          "color": "#7b8c9c",
+          "interaction": {
+            "x": 570,
+            "y": 315
+          },
+          "actions": [
+            "inspect",
+            "enter"
+          ],
+          "portal": {
+            "pack": "littleton",
+            "map": "jim"
+          }
+        },
+        {
+          "id": "venue-gez",
+          "kind": "building",
+          "name": "Gez’s House",
+          "description": "Gez’s House, a familiar landmark in Littleton. Step inside and have a look around.",
+          "x": 900,
+          "y": 150,
+          "width": 180,
+          "height": 145,
+          "solid": true,
+          "style": "house",
+          "color": "#a28d6b",
+          "interaction": {
+            "x": 990,
+            "y": 315
+          },
+          "actions": [
+            "inspect",
+            "enter"
+          ],
+          "portal": {
+            "pack": "littleton",
+            "map": "gez"
+          }
+        },
+        {
+          "id": "venue-wooly",
+          "kind": "building",
+          "name": "Wooly’s House",
+          "description": "Wooly’s House, a familiar landmark in Littleton. Step inside and have a look around.",
+          "x": 1330,
+          "y": 150,
+          "width": 180,
+          "height": 145,
+          "solid": true,
+          "style": "house",
+          "color": "#7e9073",
+          "interaction": {
+            "x": 1420,
+            "y": 315
+          },
+          "actions": [
+            "inspect",
+            "enter"
+          ],
+          "portal": {
+            "pack": "littleton",
+            "map": "wooly"
+          }
+        },
+        {
+          "id": "venue-mike",
+          "kind": "building",
+          "name": "Mikes House",
+          "description": "Mikes House, a familiar landmark in Littleton. Step inside and have a look around.",
+          "x": 100,
+          "y": 640,
+          "width": 180,
+          "height": 145,
+          "solid": true,
+          "style": "house",
+          "color": "#8f7b91",
+          "interaction": {
+            "x": 190,
+            "y": 805
+          },
+          "actions": [
+            "inspect",
+            "enter"
+          ],
+          "portal": {
+            "pack": "littleton",
+            "map": "mike"
+          }
+        },
+        {
+          "id": "venue-store",
+          "kind": "building",
+          "name": "General Store",
+          "description": "General Store, a familiar landmark in Littleton. Step inside and have a look around.",
+          "x": 465,
+          "y": 640,
+          "width": 180,
+          "height": 145,
+          "solid": true,
+          "style": "store",
+          "color": "#788b72",
+          "interaction": {
+            "x": 555,
+            "y": 805
+          },
+          "actions": [
+            "inspect",
+            "enter"
+          ],
+          "portal": {
+            "pack": "littleton",
+            "map": "store"
+          }
+        },
+        {
+          "id": "venue-restaurant",
+          "kind": "building",
+          "name": "Restaurant",
+          "description": "Restaurant, a familiar landmark in Littleton. Step inside and have a look around.",
+          "x": 1040,
+          "y": 640,
+          "width": 180,
+          "height": 145,
+          "solid": true,
+          "style": "restaurant",
+          "color": "#b27961",
+          "interaction": {
+            "x": 1130,
+            "y": 805
+          },
+          "actions": [
+            "inspect",
+            "enter"
+          ],
+          "portal": {
+            "pack": "littleton",
+            "map": "restaurant"
+          }
+        },
+        {
+          "id": "venue-pub",
+          "kind": "building",
+          "name": "Pub",
+          "description": "Pub, a familiar landmark in Littleton. Step inside and have a look around.",
+          "x": 1330,
+          "y": 640,
+          "width": 180,
+          "height": 145,
+          "solid": true,
+          "style": "pub",
+          "color": "#718178",
+          "interaction": {
+            "x": 1420,
+            "y": 805
+          },
+          "actions": [
+            "inspect",
+            "enter"
+          ],
+          "portal": {
+            "pack": "littleton",
+            "map": "pub"
+          }
+        },
+        {
+          "id": "venue-cinema",
+          "kind": "building",
+          "name": "Cinema",
+          "description": "Cinema, a familiar landmark in Littleton. Step inside and have a look around.",
+          "x": 465,
+          "y": 1080,
+          "width": 180,
+          "height": 145,
+          "solid": true,
+          "style": "cinema",
+          "color": "#9c7379",
+          "interaction": {
+            "x": 555,
+            "y": 1245
+          },
+          "actions": [
+            "inspect",
+            "enter"
+          ],
+          "portal": {
+            "pack": "littleton",
+            "map": "cinema"
+          }
+        },
+        {
+          "id": "venue-casino",
+          "kind": "building",
+          "name": "Casino",
+          "description": "Casino, a familiar landmark in Littleton. Step inside and have a look around.",
+          "x": 900,
+          "y": 1080,
+          "width": 180,
+          "height": 145,
+          "solid": true,
+          "style": "casino",
+          "color": "#8a829a",
+          "interaction": {
+            "x": 990,
+            "y": 1245
+          },
+          "actions": [
+            "inspect",
+            "enter"
+          ],
+          "portal": {
+            "pack": "golden-hour",
+            "map": "casino"
+          }
+        },
+        {
+          "id": "venue-bank",
+          "kind": "building",
+          "name": "Bank",
+          "description": "Bank, a familiar landmark in Littleton. Step inside and have a look around.",
+          "x": 1330,
+          "y": 1080,
+          "width": 180,
+          "height": 145,
+          "solid": true,
+          "style": "bank",
+          "color": "#8d968d",
+          "interaction": {
+            "x": 1420,
+            "y": 1245
+          },
+          "actions": [
+            "inspect",
+            "enter"
+          ],
+          "portal": {
+            "pack": "littleton",
+            "map": "bank"
+          }
+        },
+        {
+          "id": "venue-office",
+          "kind": "building",
+          "name": "Office Block",
+          "description": "Office Block, a familiar landmark in Littleton. Step inside and have a look around.",
+          "x": 1330,
+          "y": 20,
+          "width": 170,
+          "height": 95,
+          "solid": true,
+          "style": "office",
+          "color": "#7b8e95",
+          "interaction": {
+            "x": 1415,
+            "y": 135
+          },
+          "actions": [
+            "inspect",
+            "enter"
+          ],
+          "portal": {
+            "pack": "littleton",
+            "map": "office"
+          }
+        },
+        {
+          "id": "fountain",
+          "kind": "furniture",
+          "style": "fountain",
+          "name": "Town fountain",
+          "description": "The water catches the afternoon light. A good place to stop for a moment.",
+          "x": 760,
+          "y": 580,
+          "width": 100,
+          "height": 90,
+          "solid": true,
+          "actions": [
+            "inspect",
+            "use"
+          ],
+          "effect": {
+            "type": "restore",
+            "amount": 10,
+            "message": "A cool sip of water. You feel a little brighter."
+          }
+        },
+        {
+          "id": "town-sign",
+          "kind": "sign",
+          "name": "Welcome to Littleton",
+          "x": 710,
+          "y": 775,
+          "description": "A little town with a lot of stories. Explore the houses, visit the shops, or meet Adelle by her kitchen table. Walk with WASD or the arrow keys; click a person or object to interact.",
+          "actions": [
+            "inspect"
+          ]
+        },
+        {
+          "id": "apple-1",
+          "kind": "pickup",
+          "name": "Crisp apple",
+          "item": "apple",
+          "x": 850,
+          "y": 785,
+          "actions": [
+            "inspect",
+            "take"
+          ]
+        },
+        {
+          "id": "lost-key",
+          "kind": "pickup",
+          "name": "Brass key",
+          "item": "key",
+          "x": 715,
+          "y": 620,
+          "actions": [
+            "inspect",
+            "take"
+          ]
+        },
+        {
+          "id": "flower-1",
+          "kind": "pickup",
+          "name": "Wildflower",
+          "item": "flower",
+          "x": 980,
+          "y": 845,
+          "actions": [
+            "inspect",
+            "take"
+          ]
+        },
+        {
+          "id": "flower-2",
+          "kind": "pickup",
+          "name": "Wildflower",
+          "item": "flower",
+          "x": 1020,
+          "y": 880,
+          "actions": [
+            "inspect",
+            "take"
+          ]
+        },
+        {
+          "id": "eli",
+          "kind": "npc",
+          "name": "Elliot",
+          "x": 900,
+          "y": 720,
+          "color": "#ac8057",
+          "description": "Littleton’s unofficial tour guide.",
+          "actions": [
+            "inspect",
+            "talk"
+          ],
+          "dialogue": [
+            "First time here? Welcome to Littleton. Adelle has lost her key; you might find it near the fountain.",
+            "The General Store is just west of the square. Mabel buys wildflowers if you need a little extra gold.",
+            "The casino is down on the south street. Going inside takes you into another dungeon pack. Same friends, same pockets!"
+          ]
+        }
+      ],
+      "decorations": [
+        {
+          "type": "tree",
+          "x": 65,
+          "y": 65
+        },
+        {
+          "type": "tree",
+          "x": 295,
+          "y": 90
+        },
+        {
+          "type": "tree",
+          "x": 530,
+          "y": 60
+        },
+        {
+          "type": "tree",
+          "x": 1040,
+          "y": 70
+        },
+        {
+          "type": "tree",
+          "x": 1510,
+          "y": 380
+        },
+        {
+          "type": "tree",
+          "x": 70,
+          "y": 370
+        },
+        {
+          "type": "tree",
+          "x": 295,
+          "y": 600
+        },
+        {
+          "type": "tree",
+          "x": 540,
+          "y": 865
+        },
+        {
+          "type": "tree",
+          "x": 1080,
+          "y": 390
+        },
+        {
+          "type": "tree",
+          "x": 1120,
+          "y": 850
+        },
+        {
+          "type": "tree",
+          "x": 70,
+          "y": 930
+        },
+        {
+          "type": "tree",
+          "x": 1480,
+          "y": 900
+        },
+        {
+          "type": "tree",
+          "x": 1300,
+          "y": 440
+        },
+        {
+          "type": "tree",
+          "x": 320,
+          "y": 1190
+        },
+        {
+          "type": "tree",
+          "x": 1040,
+          "y": 1020
+        },
+        {
+          "type": "tree",
+          "x": 670,
+          "y": 880
+        },
+        {
+          "type": "bench",
+          "x": 670,
+          "y": 700
+        },
+        {
+          "type": "bench",
+          "x": 930,
+          "y": 590
+        },
+        {
+          "type": "bench",
+          "x": 910,
+          "y": 865
+        },
+        {
+          "type": "lamp",
+          "x": 330,
+          "y": 420
+        },
+        {
+          "type": "lamp",
+          "x": 1170,
+          "y": 420
+        },
+        {
+          "type": "lamp",
+          "x": 330,
+          "y": 950
+        },
+        {
+          "type": "lamp",
+          "x": 1170,
+          "y": 950
+        },
+        {
+          "type": "lamp",
+          "x": 660,
+          "y": 840
+        }
+      ],
+      "hint": "Say hello to Elliot in the square."
+    },
+    {
+      "id": "adelle",
+      "name": "Adelles House",
+      "subtitle": "Make yourself at home",
+      "width": 720,
+      "height": 560,
+      "spawn": {
+        "x": 360,
+        "y": 460
+      },
+      "environment": "indoor",
+      "surfaces": [
+        {
+          "x": 230,
+          "y": 250,
+          "width": 260,
+          "height": 180,
+          "type": "rug"
+        }
+      ],
+      "obstacles": [],
+      "decorations": [],
+      "objects": [
+        {
+          "id": "exit",
+          "kind": "door",
+          "name": "Back to Littleton",
+          "x": 360,
+          "y": 515,
+          "actions": [
+            "inspect",
+            "enter"
+          ],
+          "description": "A little fresh air awaits.",
+          "portal": {
+            "pack": "littleton",
+            "map": "town",
+            "spawn": {
+              "x": 190,
+              "y": 315
+            }
+          }
+        },
+        {
+          "id": "table",
+          "kind": "furniture",
+          "style": "table",
+          "name": "Kitchen table",
+          "description": "Warm wood, polished by years of use.",
+          "x": 230,
+          "y": 145,
+          "width": 260,
+          "height": 70,
+          "solid": true,
+          "actions": [
+            "inspect"
+          ]
+        },
+        {
+          "id": "plant",
+          "kind": "furniture",
+          "style": "plant",
+          "name": "Happy houseplant",
+          "description": "Somebody remembers to water this one.",
+          "x": 90,
+          "y": 110,
+          "width": 35,
+          "height": 40,
+          "solid": true,
+          "actions": [
+            "inspect"
+          ]
+        },
+        {
+          "id": "resident",
+          "kind": "npc",
+          "name": "Adelle",
+          "x": 360,
+          "y": 260,
+          "color": "#af786c",
+          "actions": [
+            "inspect",
+            "talk"
+          ],
+          "description": "Adelle, one of your neighbours.",
+          "dialogue": [
+            "I have misplaced my brass key. Last time I saw it, I was sitting near the fountain.",
+            "Take your time. There is always something to discover around here."
+          ],
+          "quest": {
+            "id": "lost-key",
+            "title": "Adelle’s missing key",
+            "item": "key",
+            "reward": 25,
+            "text": "Find Adelle’s brass key near the town fountain, then use it on Adelle.",
+            "completed": "My key! You found it. Here, take 25 gold for your trouble."
+          }
+        }
+      ],
+      "hint": "Say hello to Adelle."
+    },
+    {
+      "id": "jim",
+      "name": "Jims House",
+      "subtitle": "Make yourself at home",
+      "width": 720,
+      "height": 560,
+      "spawn": {
+        "x": 360,
+        "y": 460
+      },
+      "environment": "indoor",
+      "surfaces": [
+        {
+          "x": 230,
+          "y": 250,
+          "width": 260,
+          "height": 180,
+          "type": "rug"
+        }
+      ],
+      "obstacles": [],
+      "decorations": [],
+      "objects": [
+        {
+          "id": "exit",
+          "kind": "door",
+          "name": "Back to Littleton",
+          "x": 360,
+          "y": 515,
+          "actions": [
+            "inspect",
+            "enter"
+          ],
+          "description": "A little fresh air awaits.",
+          "portal": {
+            "pack": "littleton",
+            "map": "town",
+            "spawn": {
+              "x": 570,
+              "y": 315
+            }
+          }
+        },
+        {
+          "id": "table",
+          "kind": "furniture",
+          "style": "table",
+          "name": "Kitchen table",
+          "description": "Warm wood, polished by years of use.",
+          "x": 230,
+          "y": 145,
+          "width": 260,
+          "height": 70,
+          "solid": true,
+          "actions": [
+            "inspect"
+          ]
+        },
+        {
+          "id": "plant",
+          "kind": "furniture",
+          "style": "plant",
+          "name": "Happy houseplant",
+          "description": "Somebody remembers to water this one.",
+          "x": 90,
+          "y": 110,
+          "width": 35,
+          "height": 40,
+          "solid": true,
+          "actions": [
+            "inspect"
+          ]
+        },
+        {
+          "id": "resident",
+          "kind": "npc",
+          "name": "Jim",
+          "x": 360,
+          "y": 260,
+          "color": "#7b8c9c",
+          "actions": [
+            "inspect",
+            "talk"
+          ],
+          "description": "Jim, one of your neighbours.",
+          "dialogue": [
+            "I was going to mow the lawn. But the pub opens soon. Difficult choices.",
+            "Take your time. There is always something to discover around here."
+          ]
+        }
+      ],
+      "hint": "Say hello to Jim."
+    },
+    {
+      "id": "gez",
+      "name": "Gez’s House",
+      "subtitle": "Make yourself at home",
+      "width": 720,
+      "height": 560,
+      "spawn": {
+        "x": 360,
+        "y": 460
+      },
+      "environment": "indoor",
+      "surfaces": [
+        {
+          "x": 230,
+          "y": 250,
+          "width": 260,
+          "height": 180,
+          "type": "rug"
+        }
+      ],
+      "obstacles": [],
+      "decorations": [],
+      "objects": [
+        {
+          "id": "exit",
+          "kind": "door",
+          "name": "Back to Littleton",
+          "x": 360,
+          "y": 515,
+          "actions": [
+            "inspect",
+            "enter"
+          ],
+          "description": "A little fresh air awaits.",
+          "portal": {
+            "pack": "littleton",
+            "map": "town",
+            "spawn": {
+              "x": 990,
+              "y": 315
+            }
+          }
+        },
+        {
+          "id": "table",
+          "kind": "furniture",
+          "style": "table",
+          "name": "Kitchen table",
+          "description": "Warm wood, polished by years of use.",
+          "x": 230,
+          "y": 145,
+          "width": 260,
+          "height": 70,
+          "solid": true,
+          "actions": [
+            "inspect"
+          ]
+        },
+        {
+          "id": "plant",
+          "kind": "furniture",
+          "style": "plant",
+          "name": "Happy houseplant",
+          "description": "Somebody remembers to water this one.",
+          "x": 90,
+          "y": 110,
+          "width": 35,
+          "height": 40,
+          "solid": true,
+          "actions": [
+            "inspect"
+          ]
+        },
+        {
+          "id": "resident",
+          "kind": "npc",
+          "name": "Gez",
+          "x": 360,
+          "y": 260,
+          "color": "#a28d6b",
+          "actions": [
+            "inspect",
+            "talk"
+          ],
+          "description": "Gez, one of your neighbours.",
+          "dialogue": [
+            "Welcome! Mike is always recommending films. Take a look at the cinema.",
+            "Take your time. There is always something to discover around here."
+          ]
+        }
+      ],
+      "hint": "Say hello to Gez."
+    },
+    {
+      "id": "wooly",
+      "name": "Wooly’s House",
+      "subtitle": "Make yourself at home",
+      "width": 720,
+      "height": 560,
+      "spawn": {
+        "x": 360,
+        "y": 460
+      },
+      "environment": "indoor",
+      "surfaces": [
+        {
+          "x": 230,
+          "y": 250,
+          "width": 260,
+          "height": 180,
+          "type": "rug"
+        }
+      ],
+      "obstacles": [],
+      "decorations": [],
+      "objects": [
+        {
+          "id": "exit",
+          "kind": "door",
+          "name": "Back to Littleton",
+          "x": 360,
+          "y": 515,
+          "actions": [
+            "inspect",
+            "enter"
+          ],
+          "description": "A little fresh air awaits.",
+          "portal": {
+            "pack": "littleton",
+            "map": "town",
+            "spawn": {
+              "x": 1420,
+              "y": 315
+            }
+          }
+        },
+        {
+          "id": "table",
+          "kind": "furniture",
+          "style": "table",
+          "name": "Kitchen table",
+          "description": "Warm wood, polished by years of use.",
+          "x": 230,
+          "y": 145,
+          "width": 260,
+          "height": 70,
+          "solid": true,
+          "actions": [
+            "inspect"
+          ]
+        },
+        {
+          "id": "plant",
+          "kind": "furniture",
+          "style": "plant",
+          "name": "Happy houseplant",
+          "description": "Somebody remembers to water this one.",
+          "x": 90,
+          "y": 110,
+          "width": 35,
+          "height": 40,
+          "solid": true,
+          "actions": [
+            "inspect"
+          ]
+        },
+        {
+          "id": "resident",
+          "kind": "npc",
+          "name": "Wooly",
+          "x": 360,
+          "y": 260,
+          "color": "#7e9073",
+          "actions": [
+            "inspect",
+            "talk"
+          ],
+          "description": "Wooly, one of your neighbours.",
+          "dialogue": [
+            "Make yourself at home. There are apples in the square if you get hungry.",
+            "Take your time. There is always something to discover around here."
+          ]
+        }
+      ],
+      "hint": "Say hello to Wooly."
+    },
+    {
+      "id": "mike",
+      "name": "Mikes House",
+      "subtitle": "Make yourself at home",
+      "width": 720,
+      "height": 560,
+      "spawn": {
+        "x": 360,
+        "y": 460
+      },
+      "environment": "indoor",
+      "surfaces": [
+        {
+          "x": 230,
+          "y": 250,
+          "width": 260,
+          "height": 180,
+          "type": "rug"
+        }
+      ],
+      "obstacles": [],
+      "decorations": [],
+      "objects": [
+        {
+          "id": "exit",
+          "kind": "door",
+          "name": "Back to Littleton",
+          "x": 360,
+          "y": 515,
+          "actions": [
+            "inspect",
+            "enter"
+          ],
+          "description": "A little fresh air awaits.",
+          "portal": {
+            "pack": "littleton",
+            "map": "town",
+            "spawn": {
+              "x": 190,
+              "y": 805
+            }
+          }
+        },
+        {
+          "id": "table",
+          "kind": "furniture",
+          "style": "table",
+          "name": "Kitchen table",
+          "description": "Warm wood, polished by years of use.",
+          "x": 230,
+          "y": 145,
+          "width": 260,
+          "height": 70,
+          "solid": true,
+          "actions": [
+            "inspect"
+          ]
+        },
+        {
+          "id": "plant",
+          "kind": "furniture",
+          "style": "plant",
+          "name": "Happy houseplant",
+          "description": "Somebody remembers to water this one.",
+          "x": 90,
+          "y": 110,
+          "width": 35,
+          "height": 40,
+          "solid": true,
+          "actions": [
+            "inspect"
+          ]
+        },
+        {
+          "id": "resident",
+          "kind": "npc",
+          "name": "Mike",
+          "x": 360,
+          "y": 260,
+          "color": "#8f7b91",
+          "actions": [
+            "inspect",
+            "talk"
+          ],
+          "description": "Mike, one of your neighbours.",
+          "dialogue": [
+            "The Long Way Home is showing at the cinema. Buy a ticket and use it at the projector.",
+            "Take your time. There is always something to discover around here."
+          ]
+        }
+      ],
+      "hint": "Say hello to Mike."
+    },
+    {
+      "id": "store",
+      "name": "General Store",
+      "subtitle": "Open for a little adventure",
+      "width": 720,
+      "height": 560,
+      "spawn": {
+        "x": 360,
+        "y": 460
+      },
+      "environment": "indoor",
+      "surfaces": [
+        {
+          "x": 230,
+          "y": 250,
+          "width": 260,
+          "height": 180,
+          "type": "rug"
+        }
+      ],
+      "obstacles": [],
+      "decorations": [],
+      "objects": [
+        {
+          "id": "exit",
+          "kind": "door",
+          "name": "Back to Littleton",
+          "x": 360,
+          "y": 515,
+          "actions": [
+            "inspect",
+            "enter"
+          ],
+          "description": "A little fresh air awaits.",
+          "portal": {
+            "pack": "littleton",
+            "map": "town",
+            "spawn": {
+              "x": 555,
+              "y": 805
+            }
+          }
+        },
+        {
+          "id": "table",
+          "kind": "furniture",
+          "style": "table",
+          "name": "Counter",
+          "description": "Warm wood, polished by years of use.",
+          "x": 230,
+          "y": 145,
+          "width": 260,
+          "height": 70,
+          "solid": true,
+          "actions": [
+            "inspect"
+          ]
+        },
+        {
+          "id": "plant",
+          "kind": "furniture",
+          "style": "plant",
+          "name": "Happy houseplant",
+          "description": "Somebody remembers to water this one.",
+          "x": 90,
+          "y": 110,
+          "width": 35,
+          "height": 40,
+          "solid": true,
+          "actions": [
+            "inspect"
+          ]
+        },
+        {
+          "id": "resident",
+          "kind": "npc",
+          "name": "Mabel",
+          "x": 360,
+          "y": 260,
+          "color": "#788b72",
+          "actions": [
+            "inspect",
+            "talk",
+            "buy",
+            "sell"
+          ],
+          "description": "Mabel, a friendly local.",
+          "dialogue": [
+            "A little of everything! I also buy flowers, food and books.",
+            "Take your time. There is always something to discover around here."
+          ],
+          "shop": {
+            "apple": 20,
+            "flower": 12,
+            "book": 5,
+            "coffee": 10
+          }
+        }
+      ],
+      "hint": "Say hello to Mabel."
+    },
+    {
+      "id": "restaurant",
+      "name": "Restaurant",
+      "subtitle": "Open for a little adventure",
+      "width": 720,
+      "height": 560,
+      "spawn": {
+        "x": 360,
+        "y": 460
+      },
+      "environment": "indoor",
+      "surfaces": [
+        {
+          "x": 230,
+          "y": 250,
+          "width": 260,
+          "height": 180,
+          "type": "rug"
+        }
+      ],
+      "obstacles": [],
+      "decorations": [],
+      "objects": [
+        {
+          "id": "exit",
+          "kind": "door",
+          "name": "Back to Littleton",
+          "x": 360,
+          "y": 515,
+          "actions": [
+            "inspect",
+            "enter"
+          ],
+          "description": "A little fresh air awaits.",
+          "portal": {
+            "pack": "littleton",
+            "map": "town",
+            "spawn": {
+              "x": 1130,
+              "y": 805
+            }
+          }
+        },
+        {
+          "id": "table",
+          "kind": "furniture",
+          "style": "table",
+          "name": "Counter",
+          "description": "Warm wood, polished by years of use.",
+          "x": 230,
+          "y": 145,
+          "width": 260,
+          "height": 70,
+          "solid": true,
+          "actions": [
+            "inspect"
+          ]
+        },
+        {
+          "id": "plant",
+          "kind": "furniture",
+          "style": "plant",
+          "name": "Happy houseplant",
+          "description": "Somebody remembers to water this one.",
+          "x": 90,
+          "y": 110,
+          "width": 35,
+          "height": 40,
+          "solid": true,
+          "actions": [
+            "inspect"
+          ]
+        },
+        {
+          "id": "resident",
+          "kind": "npc",
+          "name": "Rosa",
+          "x": 360,
+          "y": 260,
+          "color": "#b27961",
+          "actions": [
+            "inspect",
+            "talk",
+            "buy",
+            "sell"
+          ],
+          "description": "Rosa, a friendly local.",
+          "dialogue": [
+            "Good food, good company. Try our club sandwich.",
+            "Take your time. There is always something to discover around here."
+          ],
+          "shop": {
+            "sandwich": 20,
+            "coffee": 20,
+            "apple": 10
+          }
+        }
+      ],
+      "hint": "Say hello to Rosa."
+    },
+    {
+      "id": "pub",
+      "name": "Pub",
+      "subtitle": "Open for a little adventure",
+      "width": 720,
+      "height": 560,
+      "spawn": {
+        "x": 360,
+        "y": 460
+      },
+      "environment": "indoor",
+      "surfaces": [
+        {
+          "x": 230,
+          "y": 250,
+          "width": 260,
+          "height": 180,
+          "type": "rug"
+        }
+      ],
+      "obstacles": [],
+      "decorations": [],
+      "objects": [
+        {
+          "id": "exit",
+          "kind": "door",
+          "name": "Back to Littleton",
+          "x": 360,
+          "y": 515,
+          "actions": [
+            "inspect",
+            "enter"
+          ],
+          "description": "A little fresh air awaits.",
+          "portal": {
+            "pack": "littleton",
+            "map": "town",
+            "spawn": {
+              "x": 1420,
+              "y": 805
+            }
+          }
+        },
+        {
+          "id": "table",
+          "kind": "furniture",
+          "style": "table",
+          "name": "Counter",
+          "description": "Warm wood, polished by years of use.",
+          "x": 230,
+          "y": 145,
+          "width": 260,
+          "height": 70,
+          "solid": true,
+          "actions": [
+            "inspect"
+          ]
+        },
+        {
+          "id": "plant",
+          "kind": "furniture",
+          "style": "plant",
+          "name": "Happy houseplant",
+          "description": "Somebody remembers to water this one.",
+          "x": 90,
+          "y": 110,
+          "width": 35,
+          "height": 40,
+          "solid": true,
+          "actions": [
+            "inspect"
+          ]
+        },
+        {
+          "id": "resident",
+          "kind": "npc",
+          "name": "Alfie",
+          "x": 360,
+          "y": 260,
+          "color": "#718178",
+          "actions": [
+            "inspect",
+            "talk",
+            "buy",
+            "sell"
+          ],
+          "description": "Alfie, a friendly local.",
+          "dialogue": [
+            "A quiet pint, a warm welcome. That is all you need some days.",
+            "Take your time. There is always something to discover around here."
+          ],
+          "shop": {
+            "coffee": 20,
+            "sandwich": 10
+          }
+        }
+      ],
+      "hint": "Say hello to Alfie."
+    },
+    {
+      "id": "cinema",
+      "name": "Cinema",
+      "subtitle": "Open for a little adventure",
+      "width": 720,
+      "height": 560,
+      "spawn": {
+        "x": 360,
+        "y": 460
+      },
+      "environment": "indoor",
+      "surfaces": [
+        {
+          "x": 230,
+          "y": 250,
+          "width": 260,
+          "height": 180,
+          "type": "rug"
+        }
+      ],
+      "obstacles": [],
+      "decorations": [],
+      "objects": [
+        {
+          "id": "exit",
+          "kind": "door",
+          "name": "Back to Littleton",
+          "x": 360,
+          "y": 515,
+          "actions": [
+            "inspect",
+            "enter"
+          ],
+          "description": "A little fresh air awaits.",
+          "portal": {
+            "pack": "littleton",
+            "map": "town",
+            "spawn": {
+              "x": 555,
+              "y": 1245
+            }
+          }
+        },
+        {
+          "id": "table",
+          "kind": "furniture",
+          "style": "table",
+          "name": "Counter",
+          "description": "Warm wood, polished by years of use.",
+          "x": 230,
+          "y": 145,
+          "width": 260,
+          "height": 70,
+          "solid": true,
+          "actions": [
+            "inspect"
+          ]
+        },
+        {
+          "id": "plant",
+          "kind": "furniture",
+          "style": "plant",
+          "name": "Happy houseplant",
+          "description": "Somebody remembers to water this one.",
+          "x": 90,
+          "y": 110,
+          "width": 35,
+          "height": 40,
+          "solid": true,
+          "actions": [
+            "inspect"
+          ]
+        },
+        {
+          "id": "resident",
+          "kind": "npc",
+          "name": "Bea",
+          "x": 360,
+          "y": 260,
+          "color": "#9c7379",
+          "actions": [
+            "inspect",
+            "talk",
+            "buy",
+            "sell"
+          ],
+          "description": "Bea, a friendly local.",
+          "dialogue": [
+            "Our matinee is on all day. Tickets are twelve gold.",
+            "Take your time. There is always something to discover around here."
+          ],
+          "shop": {
+            "ticket": 30
+          }
+        },
+        {
+          "id": "projector",
+          "kind": "furniture",
+          "style": "screen",
+          "name": "Cinema projector",
+          "x": 150,
+          "y": 50,
+          "width": 420,
+          "height": 55,
+          "solid": true,
+          "tags": [
+            "projector"
+          ],
+          "actions": [
+            "inspect"
+          ],
+          "description": "The Long Way Home. Select a cinema ticket in your inventory, then use it here."
+        }
+      ],
+      "hint": "Say hello to Bea."
+    },
+    {
+      "id": "bank",
+      "name": "Bank",
+      "subtitle": "Open for a little adventure",
+      "width": 720,
+      "height": 560,
+      "spawn": {
+        "x": 360,
+        "y": 460
+      },
+      "environment": "indoor",
+      "surfaces": [
+        {
+          "x": 230,
+          "y": 250,
+          "width": 260,
+          "height": 180,
+          "type": "rug"
+        }
+      ],
+      "obstacles": [],
+      "decorations": [],
+      "objects": [
+        {
+          "id": "exit",
+          "kind": "door",
+          "name": "Back to Littleton",
+          "x": 360,
+          "y": 515,
+          "actions": [
+            "inspect",
+            "enter"
+          ],
+          "description": "A little fresh air awaits.",
+          "portal": {
+            "pack": "littleton",
+            "map": "town",
+            "spawn": {
+              "x": 1420,
+              "y": 1245
+            }
+          }
+        },
+        {
+          "id": "table",
+          "kind": "furniture",
+          "style": "table",
+          "name": "Counter",
+          "description": "Warm wood, polished by years of use.",
+          "x": 230,
+          "y": 145,
+          "width": 260,
+          "height": 70,
+          "solid": true,
+          "actions": [
+            "inspect"
+          ]
+        },
+        {
+          "id": "plant",
+          "kind": "furniture",
+          "style": "plant",
+          "name": "Happy houseplant",
+          "description": "Somebody remembers to water this one.",
+          "x": 90,
+          "y": 110,
+          "width": 35,
+          "height": 40,
+          "solid": true,
+          "actions": [
+            "inspect"
+          ]
+        },
+        {
+          "id": "resident",
+          "kind": "npc",
+          "name": "Morgan",
+          "x": 360,
+          "y": 260,
+          "color": "#8d968d",
+          "actions": [
+            "inspect",
+            "talk",
+            "deposit",
+            "withdraw"
+          ],
+          "description": "Morgan, a friendly local.",
+          "dialogue": [
+            "You can deposit and withdraw ten gold at a time. Your balance stays with you in this session.",
+            "Take your time. There is always something to discover around here."
+          ],
+          "bank": true
+        }
+      ],
+      "hint": "Say hello to Morgan."
+    },
+    {
+      "id": "office",
+      "name": "Office Block",
+      "subtitle": "Open for a little adventure",
+      "width": 720,
+      "height": 560,
+      "spawn": {
+        "x": 360,
+        "y": 460
+      },
+      "environment": "indoor",
+      "surfaces": [
+        {
+          "x": 230,
+          "y": 250,
+          "width": 260,
+          "height": 180,
+          "type": "rug"
+        }
+      ],
+      "obstacles": [],
+      "decorations": [],
+      "objects": [
+        {
+          "id": "exit",
+          "kind": "door",
+          "name": "Back to Littleton",
+          "x": 360,
+          "y": 515,
+          "actions": [
+            "inspect",
+            "enter"
+          ],
+          "description": "A little fresh air awaits.",
+          "portal": {
+            "pack": "littleton",
+            "map": "town",
+            "spawn": {
+              "x": 1415,
+              "y": 135
+            }
+          }
+        },
+        {
+          "id": "table",
+          "kind": "furniture",
+          "style": "table",
+          "name": "Counter",
+          "description": "Warm wood, polished by years of use.",
+          "x": 230,
+          "y": 145,
+          "width": 260,
+          "height": 70,
+          "solid": true,
+          "actions": [
+            "inspect"
+          ]
+        },
+        {
+          "id": "plant",
+          "kind": "furniture",
+          "style": "plant",
+          "name": "Happy houseplant",
+          "description": "Somebody remembers to water this one.",
+          "x": 90,
+          "y": 110,
+          "width": 35,
+          "height": 40,
+          "solid": true,
+          "actions": [
+            "inspect"
+          ]
+        },
+        {
+          "id": "resident",
+          "kind": "npc",
+          "name": "Sam",
+          "x": 360,
+          "y": 260,
+          "color": "#7b8e95",
+          "actions": [
+            "inspect",
+            "talk"
+          ],
+          "description": "Sam, a friendly local.",
+          "dialogue": [
+            "The town runs on coffee and optimism. Mostly coffee.",
+            "Take your time. There is always something to discover around here."
+          ]
+        }
+      ],
+      "hint": "Say hello to Sam."
+    }
+  ]
+}
